@@ -11,69 +11,118 @@
 <style>
 :root{
   --ink:#1d2a1f; --soft:#4a5a4c; --bg:#fbf8ee; --paper:#fffdf7; --line:#e6dfc8;
-  --leaf:#2f6b3a; --leaf-dark:#1b4324; --leaf-light:#e1eedc; --banana:#f4c430; --banana-soft:#fcefb8; --red:#b5432b;
+  --leaf:#2f6b3a; --leaf-dark:#1b4324; --leaf-light:#e1eedc; --banana:#f4c430; --banana-soft:#fcefb8; --red:#b5432b; --sea:#2c6e8f;
   --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
 }
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:64px}
 body{margin:0;font:17px/1.65 var(--sans);color:var(--ink);background:var(--bg)}
+img{max-width:100%;display:block}
 a{color:var(--leaf)}
 h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0 0 .5em}
 h2{font-size:clamp(1.7rem,3.6vw,2.3rem)}
 h3{font-size:1.2rem}
-.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+p{margin:0 0 1em}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
 section{padding:64px 0;border-bottom:1px solid var(--line)}
+section.alt{background:var(--paper)}
 .label{font-size:.8rem;font-weight:700;color:var(--leaf);margin-bottom:.4em}
-.lead{font-size:1.08rem;color:var(--soft);max-width:740px}
+.lead{font-size:1.08rem;color:var(--soft);max-width:760px}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
+section.alt .card{background:var(--bg)}
+.card p:last-child{margin:0}
 .grid{display:grid;gap:18px}
-.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.split{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:start}
+figure{margin:0}
+figure img{border-radius:12px;width:100%;object-fit:cover}
+figcaption{font-size:.82rem;color:var(--soft);margin-top:8px}
+.thesis-link{display:inline-block;font-size:.78rem;font-weight:700;background:var(--banana-soft);color:#6e5200;padding:3px 10px;border-radius:999px;margin-bottom:10px}
+.src{font-size:.8rem;color:var(--soft)}
 
 nav{position:sticky;top:0;z-index:10;background:var(--leaf-dark)}
-nav .wrap{display:flex;gap:4px;align-items:center;height:54px;overflow-x:auto;scrollbar-width:none}
+nav .wrap{display:flex;gap:2px;align-items:center;height:54px;overflow-x:auto;scrollbar-width:none}
 nav .wrap::-webkit-scrollbar{display:none}
-nav a{color:#dbe7d7;text-decoration:none;font-size:.9rem;padding:6px 10px;border-radius:8px;white-space:nowrap}
+nav a{flex:none;color:#dbe7d7;text-decoration:none;font-size:.88rem;padding:6px 9px;border-radius:8px;white-space:nowrap}
 nav a:hover{background:rgba(244,196,48,.2);color:var(--banana)}
 nav a.home{font-family:var(--serif);font-weight:800;color:var(--banana);margin-right:8px}
 
-.hero{background:linear-gradient(160deg,var(--leaf-dark),#143519);color:#f6f2e4;padding:72px 0 60px;border:0}
-.hero h1{font-size:clamp(2.1rem,5.5vw,3.6rem);font-weight:800;max-width:820px}
+.hero{position:relative;color:#f6f2e4;padding:0;border:0;background:var(--leaf-dark);overflow:hidden}
+.hero .bgimg{position:absolute;inset:0;background:url(images/banana-plantation.jpg) center 35%/cover}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,53,25,.96) 0%,rgba(20,53,25,.85) 50%,rgba(20,53,25,.35) 100%)}
+.hero .wrap{position:relative;padding-top:90px;padding-bottom:80px}
+.hero h1{font-size:clamp(2.1rem,5.5vw,3.6rem);font-weight:800;max-width:760px}
 .hero h1 span{color:var(--banana)}
-.hero p{color:#cfdfcb;max-width:720px;font-size:1.1rem}
+.hero p{color:#dbe7d7;max-width:640px;font-size:1.12rem}
 .hero .course{color:var(--banana);font-weight:600;font-size:.9rem;margin-bottom:12px}
+.hero .credit{position:absolute;right:12px;bottom:8px;font-size:.72rem;color:rgba(255,255,255,.7)}
 
 .facts dt{font-size:.8rem;font-weight:700;color:var(--leaf);margin-top:16px}
 .facts dt:first-child{margin-top:0}
 .facts dd{margin:3px 0 0}
 .thesis{background:var(--leaf-dark);color:#f6f2e4;border:0}
 .thesis .label{color:var(--banana)}
-.thesis p{font-family:var(--serif);font-size:1.2rem;line-height:1.5;margin:0}
+.thesis .big{font-family:var(--serif);font-size:1.2rem;line-height:1.5}
+.thesis .purpose{border-top:1px solid rgba(255,255,255,.2);margin-top:18px;padding-top:16px;color:#cfdfcb;font-size:.95rem}
 .members{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 .members span{background:var(--leaf-light);padding:4px 12px;border-radius:999px;font-size:.92rem}
 .members span.coord{background:var(--banana)}
+.outline{counter-reset:o;list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:14px 0 0}
+.outline li{counter-increment:o;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-weight:600;font-size:.95rem}
+.outline li::before{content:counter(o) ". ";color:var(--leaf)}
 
-.tl{list-style:none;padding:0;margin:24px 0 0;border-left:3px solid var(--line)}
-.tl li{position:relative;padding:0 0 22px 26px}
+.tl{list-style:none;padding:0;margin:20px 0 0;border-left:3px solid var(--line)}
+.tl li{position:relative;padding:0 0 20px 26px}
 .tl li::before{content:"";position:absolute;left:-9px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--banana);border:3px solid var(--leaf-dark)}
-.tl b.y{font-family:var(--serif);font-size:1.15rem;color:var(--leaf-dark);display:block}
+.tl b.y{font-family:var(--serif);font-size:1.12rem;color:var(--leaf-dark);display:block}
 .tl li.ctx::before{background:var(--paper);border-color:#9aa896}
 .tl li.ctx b.y{color:var(--soft)}
+.tl-head{font-weight:700;color:var(--soft);margin:24px 0 8px;font-size:.9rem}
 
-.stat .n{font-family:var(--serif);font-size:2.2rem;font-weight:800;color:var(--leaf-dark);line-height:1.1}
-.stat .l{font-size:.93rem;color:var(--soft);margin-top:6px}
-.src{font-size:.8rem;color:var(--soft)}
+svg.map{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:#cfe6ef}
+.places{list-style:none;padding:0;margin:0}
+.places li{padding:9px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.places li:last-child{border:0}
+.places b{color:var(--leaf-dark)}
+
+.stat .n{font-family:var(--serif);font-size:2.1rem;font-weight:800;color:var(--leaf-dark);line-height:1.1}
+.stat .l{font-size:.92rem;color:var(--soft);margin-top:6px}
+.bar-row{display:grid;grid-template-columns:120px minmax(0,1fr) 64px;gap:10px;align-items:center;margin:9px 0;font-size:.92rem}
+.bar-track{background:var(--bg);border-radius:6px;height:22px;overflow:hidden;border:1px solid var(--line)}
+.bar-fill{height:100%;background:var(--banana);border-radius:6px}
+.bar-row .v{font-weight:700;text-align:right}
 
 .list{list-style:none;padding:0;margin:0}
 .list li{padding:12px 0;border-bottom:1px dashed var(--line)}
 .list li:last-child{border:0}
+.compare{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--ink);border-radius:14px;overflow:hidden}
+.compare>div{padding:22px}
+.compare>div:first-child{background:var(--leaf-light)}
+.compare>div:last-child{background:var(--banana-soft)}
+.compare ul{padding-left:18px;margin:0}
+.compare li{margin-bottom:6px}
+
+.route{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px}
+.route div{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:.88rem;position:relative}
+section.alt .route div{background:var(--bg)}
+.route b{display:block;font-size:.95rem;margin-bottom:4px}
+.route .e{font-size:1.5rem;display:block}
 
 .risk{border-left:5px solid var(--red)}
+.risk .when{font-size:.8rem;font-weight:700;color:var(--red)}
 .lesson{border-top:5px solid var(--banana)}
 .q{border-left:4px solid var(--leaf);padding-left:14px;font-style:italic;margin:12px 0}
+.rel{height:8px;background:var(--bg);border-radius:999px;overflow:hidden;border:1px solid var(--line);margin-top:6px}
+.rel div{height:100%;background:var(--leaf)}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:999px}
+.tag.p{background:var(--leaf-light);color:var(--leaf-dark)}
+.tag.s{background:var(--banana-soft);color:#6e5200}
 
-.gloss dt{font-weight:700;margin-top:12px}
-.gloss dd{margin:2px 0 0;color:var(--soft)}
+.gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:4px 28px;margin:0}
+.gloss div{padding:10px 0;border-bottom:1px solid var(--line)}
+.gloss dt{font-weight:700}
+.gloss dd{margin:2px 0 0;color:var(--soft);font-size:.95rem}
 
 .bib h3{margin-top:26px}
 .bib ol{list-style:none;padding:0}
@@ -81,7 +130,8 @@ nav a.home{font-family:var(--serif);font-weight:800;color:var(--banana);margin-r
 
 footer{background:var(--ink);color:#c9d6c6;padding:32px 0;font-size:.9rem}
 footer b{color:var(--banana)}
-@media(max-width:600px){section{padding:48px 0}}
+@media(max-width:820px){.split{grid-template-columns:1fr}.route{grid-template-columns:1fr 1fr}.compare{grid-template-columns:1fr}}
+@media(max-width:600px){section{padding:48px 0}.bar-row{grid-template-columns:90px minmax(0,1fr) 56px}.route{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -89,18 +139,24 @@ footer b{color:var(--banana)}
 <nav>
   <div class="wrap">
     <a class="home" href="#top">🍌 Group 5</a>
-    <a href="#research">Research</a>
+    <a href="#introduction">Introduction</a>
     <a href="#background">Background</a>
     <a href="#timeline">Timeline</a>
+    <a href="#map">Map</a>
     <a href="#economy">Economy</a>
     <a href="#daily-life">Daily life</a>
+    <a href="#transport">Transport</a>
     <a href="#risks">Risks</a>
+    <a href="#sources">Sources</a>
     <a href="#conclusion">Conclusion</a>
+    <a href="#glossary">Key terms</a>
     <a href="#bibliography">Bibliography</a>
   </div>
 </nav>
 
 <header class="hero" id="top">
+  <div class="bgimg" role="img" aria-label="Green banana bunches growing on a plantation"></div>
+  <div class="shade"></div>
   <div class="wrap">
     <div class="course">HIST1014 Introduction to Belizean History · Section 5 · Group 5</div>
     <h1>Digital History Project: <span>Banana Industry in Belize</span></h1>
@@ -108,10 +164,10 @@ footer b{color:var(--banana)}
   </div>
 </header>
 
-<!-- RESEARCH -->
-<section id="research">
+<!-- INTRODUCTION -->
+<section id="introduction">
   <div class="wrap">
-    <h2>Our research</h2>
+    <h2>Introduction</h2>
     <div class="grid g2" style="margin-top:20px">
       <div class="card">
         <dl class="facts" style="margin:0">
@@ -125,18 +181,37 @@ footer b{color:var(--banana)}
       </div>
       <div class="card thesis">
         <div class="label">Thesis</div>
-        <p>The expansion of banana farming brought much-needed jobs, money, and roads to the Stann Creek and Toledo districts, but it also made the region heavily dependent on a single crop that could easily be ruined by bad weather or changes in overseas demand.</p>
+        <div class="big">The expansion of banana farming brought much-needed jobs, money, and roads to the Stann Creek and Toledo districts, but it also made the region heavily dependent on a single crop that could easily be ruined by bad weather or changes in overseas demand.</div>
+        <div class="purpose"><b>Purpose of this project:</b> to use primary and secondary sources to show how one export crop reshaped the economy and everyday life of southern Belize, and what Belizeans can learn from that history today.</div>
       </div>
     </div>
+    <h3 style="margin-top:36px">What this page covers</h3>
+    <ol class="outline">
+      <li>Background before 1970</li>
+      <li>Timeline, 1970–2000</li>
+      <li>Where bananas are grown</li>
+      <li>Economic impact</li>
+      <li>Changes to daily life</li>
+      <li>Transport and trade routes</li>
+      <li>Risks of one-crop dependence</li>
+      <li>Conclusion and lessons</li>
+    </ol>
   </div>
 </section>
 
 <!-- BACKGROUND -->
-<section id="background">
-  <div class="wrap">
-    <h2>Background: before 1970</h2>
-    <p class="lead">Bananas were not new to Belize in 1970. The first boom started in the 1890s around Stann Creek Town (now Dangriga), where companies such as the British Honduras Syndicate and later United Fruit shipped fruit to the United States. In 1916 Panama disease, a soil fungus that kills banana plants, reached the farms, and by about 1937 the first industry was dead. Citrus replaced it in the Stann Creek Valley.</p>
-    <p class="lead">Later attempts to revive bananas in 1947 and the 1960s struggled with pests and disease. Before the 1970s, southern Belize had few roads, little steady wage work, and most families lived by small-scale farming and fishing.</p>
+<section id="background" class="alt">
+  <div class="wrap split">
+    <div>
+      <h2>Background: before 1970</h2>
+      <p>For most of the 1800s, British Honduras (it became a colony in 1862) depended on mahogany logging. Sugar plantations in the south, worked by Chinese and Indian indentured labourers, mostly failed. Garifuna settlers had founded Stann Creek Town (now Dangriga) in the 1820s.</p>
+      <p>The first banana boom began in the late 1800s. Companies such as the Manatee Fruit Co., British Honduras Fruit Co. and Belize Fruit Co. planted along the Mullins and Manatee Rivers, and the Walize Fruit Co. at Monkey River. The British Honduras Syndicate combined farms into a 14,301-acre estate near Stann Creek Town and, in 1892, built a mule tramway to the pier to ship bananas to Mobile, Alabama. In 1909 the United Fruit Company took an option on 7,538 acres and the government built the Stann Creek Railway.</p>
+      <p>Then disaster struck. Panama disease, a soil fungus that kills banana plants, was found in 1916, and by about 1937 the first industry was dead. Citrus took over the Stann Creek Valley. A 1947 revival with Robusta bananas was hit by nematodes, and new firms in the 1960s tried again with disease-resistant varieties. By 1970 southern Belize still had few roads and little steady wage work; most families lived by small farming and fishing.</p>
+    </div>
+    <figure>
+      <img src="images/banana-loading-historic.jpg" alt="Black-and-white photograph of workers loading banana bunches into wooden rail cars" loading="lazy">
+      <figcaption>Workers loading banana bunches into wooden rail cars during the early banana trade. Historical photograph used in our group presentation.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -144,81 +219,181 @@ footer b{color:var(--banana)}
 <section id="timeline">
   <div class="wrap">
     <h2>Timeline, 1970–2000</h2>
+    <p class="lead">The key events of our period, with two events just after 2000 that show where these changes led.</p>
     <ul class="tl">
-      <li><b class="y">1970s</b>Banana growing moves south to southern Stann Creek and northern Toledo, using disease-resistant varieties.</li>
+      <li><b class="y">1970s</b>Banana growing shifts south to southern Stann Creek and northern Toledo, using disease-resistant varieties.</li>
       <li><b class="y">1975</b>The government-run Banana Control Board takes charge of the industry. Stann Creek Town is renamed Dangriga.</li>
-      <li><b class="y">1975 and 1978</b>Hurricanes destroy plantations, setting the industry back.</li>
+      <li><b class="y">1975 and 1978</b>Hurricanes destroy plantations, setting the industry back. Under the Banana Control Board, production stays low.</li>
       <li><b class="y">1985</b>The Banana Control Board is US$9 million in debt. The government sells about 2,200 acres of farms to private growers.</li>
-      <li><b class="y">1985–1990</b>Under private ownership, production nearly triples and farmland grows to over 5,900 acres. Farms turn largely to migrant workers from Guatemala, Honduras and El Salvador.</li>
-      <li><b class="y">1990</b>The deep-water Port of Big Creek opens with funding from Fyffes. Before this, Belize's bananas had to be shipped through Puerto Cortés, Honduras.</li>
+      <li><b class="y">1985–1990</b>Under private owners, production nearly triples and farmland grows to over 5,900 acres. Farms turn largely to migrant workers from Guatemala, Honduras and El Salvador, and union presence weakens.</li>
+      <li><b class="y">1990</b>The deep-water Port of Big Creek opens, financed with help from Fyffes. Until then, Belize's bananas had to be shipped through Puerto Cortés, Honduras.</li>
       <li><b class="y">1991</b>The Banana Growers Association (BGA) takes over responsibility for the industry.</li>
-      <li><b class="y">1990s</b>Belize sells bananas to Britain at protected prices under the Lomé Convention, but a long trade fight at the World Trade Organization (the "Banana Wars") starts to wear those protections down.</li>
-      <li><b class="y">1994–1995</b>Production drops from 68,000 to 45,000 metric tons in one year, showing how quickly output can swing.</li>
+      <li><b class="y">1990s</b>Belize sells bananas to Britain at protected prices under the Lomé Convention, but a long trade fight at the World Trade Organization (the "Banana Wars") begins to wear those protections down.</li>
+      <li><b class="y">1994–1995</b>Production falls from 68,000 to 45,000 metric tons in a single year, showing how quickly output can swing.</li>
       <li><b class="y">1999</b>Bananas make up 16 percent of all Belizean exports.</li>
-      <li class="ctx"><b class="y">2001 (just after our period)</b>Hurricane Iris levels every banana farm in the south, proving how risky dependence on one crop had become.</li>
+      <li class="ctx"><b class="y">2001 (after our period)</b>Hurricane Iris levels every banana farm in the south in under two hours.</li>
+      <li class="ctx"><b class="y">2015 (after our period)</b>Fyffes stops buying from Meridian Enterprises, one of the large growers, and thousands of Belizeans lose work.</li>
     </ul>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map" class="alt">
+  <div class="wrap">
+    <h2>Where Belize's bananas are grown</h2>
+    <p class="lead">Between 1970 and 2000 the industry settled in southern Stann Creek and northern Toledo, far south of the first farms near Dangriga.</p>
+    <div class="split" style="margin-top:20px">
+      <svg class="map" id="mapsvg" viewBox="0 0 500 600" role="img" aria-label="Simplified map of southern Belize showing banana-industry locations"></svg>
+      <ul class="places">
+        <li><b>Dangriga (Stann Creek Town):</b> export point of the first banana boom in the 1890s.</li>
+        <li><b>Mullins River:</b> where the founding banana companies planted in the late 1800s.</li>
+        <li><b>Stann Creek Valley:</b> served by the 1909 railway; turned to citrus after Panama disease.</li>
+        <li><b>Cowpen:</b> a farm community that grew with the modern industry.</li>
+        <li><b>Big Creek / Independence:</b> site of the Port of Big Creek (1990), the main banana export point.</li>
+        <li><b>Bella Vista:</b> a Toledo community that grew around the farms, home to many migrant workers.</li>
+        <li><b>Monkey River:</b> site of the Walize Fruit Co.; Hurricane Iris made landfall nearby in 2001.</li>
+        <li><b>Punta Gorda:</b> Toledo's district town, linked to the banana belt by the Southern Highway.</li>
+      </ul>
+    </div>
+    <p class="src" style="margin-top:10px">Simplified map drawn from approximate coordinates, for orientation only.</p>
   </div>
 </section>
 
 <!-- ECONOMY -->
 <section id="economy">
   <div class="wrap">
+    <span class="thesis-link">Thesis evidence: jobs, money and roads</span>
     <h2>How bananas changed the economy</h2>
-    <div class="grid g3" style="margin-top:20px">
+    <div class="grid g3" style="margin-top:16px">
       <div class="card stat"><div class="n">~3×</div><div class="l">Increase in production within five years of privatisation in 1985</div></div>
       <div class="card stat"><div class="n">16%</div><div class="l">Share of all Belize's exports that came from bananas in 1999</div></div>
       <div class="card stat"><div class="n">BZ$65M</div><div class="l">Yearly foreign exchange the industry earned by 2001</div></div>
     </div>
-    <div class="grid g3" style="margin-top:18px">
-      <div class="card"><h3>👷 Jobs</h3><p style="margin:0">Banana farms gave steady, year-round wage work in Stann Creek and Toledo, where jobs had been scarce. By 2001 the industry was described as the country's largest employer.</p></div>
-      <div class="card"><h3>💵 Money</h3><p style="margin:0">Selling bananas to Britain brought foreign currency into Belize, and wages flowed into local shops and businesses in the south.</p></div>
-      <div class="card"><h3>🛣️ Roads and port</h3><p style="margin:0">Roads were built and improved to move fruit from the farms, and the Port of Big Creek let Belize ship bananas straight to Europe.</p></div>
+    <div class="grid g2" style="margin-top:18px">
+      <div class="card">
+        <ul class="list">
+          <li><b>👷 Jobs.</b> Banana farms gave steady, year-round wage work in Stann Creek and Toledo, where jobs had been scarce. By 2001 the banana industry was described as the country's largest employer.</li>
+          <li><b>💵 Money.</b> Selling bananas to Britain brought foreign currency into Belize, and wages flowed into shops and businesses in the south.</li>
+          <li><b>🛣️ Roads.</b> Roads were built and improved to move fruit from the farms and made travel between villages easier.</li>
+          <li><b>⚓ Port of Big Creek.</b> Belize's only deep-water port, built for bananas, let Belize ship directly to Europe instead of paying to go through Honduras.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Where the money goes today</h3>
+        <p class="src" style="font-size:.9rem">The trade built between 1970 and 2000 still points to Europe. Banana export earnings by destination, 2022 (US$ millions):</p>
+        <div id="bars"></div>
+        <p class="src">Source: Observatory of Economic Complexity. Total 2022: US$41.7M. In 2023 bananas earned US$42.2M, Belize's 2nd biggest export.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- DAILY LIFE -->
-<section id="daily-life">
+<section id="daily-life" class="alt">
   <div class="wrap">
+    <span class="thesis-link">Thesis evidence: changes to daily life</span>
     <h2>How bananas changed daily life</h2>
-    <ul class="list" style="margin-top:12px">
-      <li><b>From farming for food to working for wages.</b> Many families who had lived from small farms and fishing now worked for pay on large plantations.</li>
-      <li><b>New and growing communities.</b> Villages such as Independence, Big Creek, Cowpen and Bella Vista grew up around the farms and the port.</li>
-      <li><b>New people in the south.</b> After 1985, thousands of workers came from Guatemala, Honduras and El Salvador, changing the population of southern Stann Creek and Toledo.</li>
-      <li><b>Weaker worker protections.</b> When the farms were privatised, union presence in the industry declined, and much of the work was low-paid field labour.</li>
-      <li><b>Easier travel.</b> Better roads made it easier for people to reach markets, schools and clinics, and to travel between villages.</li>
-    </ul>
+    <div class="split" style="margin-top:16px">
+      <div>
+        <ul class="list">
+          <li><b>From farming for food to working for wages.</b> Many families who had lived from small farms and fishing now worked for pay on large plantations.</li>
+          <li><b>New and growing communities.</b> Independence, Big Creek, Cowpen and Bella Vista grew around the farms and the port.</li>
+          <li><b>New people in the south.</b> After 1985, thousands of workers came from Guatemala, Honduras and El Salvador, changing the population of southern Stann Creek and Toledo.</li>
+          <li><b>Weaker worker protections.</b> After privatisation, union presence in the industry declined, and much of the work was low-paid field labour.</li>
+          <li><b>Easier travel.</b> Better roads made it easier to reach markets, schools and clinics.</li>
+        </ul>
+      </div>
+      <figure>
+        <img src="images/banana-plantation.jpg" alt="Banana plants with green bunches and purple flowers on a plantation" loading="lazy" style="aspect-ratio:4/5">
+        <figcaption>Banana plants with ripening bunches. Image used in our group presentation.</figcaption>
+      </figure>
+    </div>
+    <div class="compare" style="margin-top:28px">
+      <div>
+        <h3>Before 1985</h3>
+        <ul>
+          <li>Mostly local labour from Dangriga and nearby villages.</li>
+          <li>Government-run Banana Control Board from 1975.</li>
+          <li>Unionised workers, but low production.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>After 1985</h3>
+        <ul>
+          <li>Private growers own the farms.</li>
+          <li>Largely migrant workers from Central America.</li>
+          <li>Much higher production, weaker unions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORT -->
+<section id="transport">
+  <div class="wrap">
+    <span class="thesis-link">Thesis evidence: roads and trade routes</span>
+    <h2>Transport and trade routes: field to market</h2>
+    <h3 style="margin-top:20px">1890s–1930s</h3>
+    <div class="route">
+      <div><span class="e">🌱</span><b>Farm</b>Estates on the Mullins, Manatee and Monkey Rivers.</div>
+      <div><span class="e">🛶</span><b>River boats</b>Canoes carried bunches downriver.</div>
+      <div><span class="e">🐴</span><b>Mules</b>1892 mule tramway to the Stann Creek pier.</div>
+      <div><span class="e">🚂</span><b>Railway</b>Stann Creek Railway from about 1909.</div>
+      <div><span class="e">🚢</span><b>Steamship</b>North to US ports such as Mobile, Alabama.</div>
+    </div>
+    <h3 style="margin-top:28px">1990–today</h3>
+    <div class="route">
+      <div><span class="e">🌱</span><b>Farm</b>Southern Stann Creek and northern Toledo.</div>
+      <div><span class="e">📦</span><b>Packing shed</b>Fruit is washed, inspected and boxed on the farm.</div>
+      <div><span class="e">🚚</span><b>Truck</b>Boxes travel by road to the port.</div>
+      <div><span class="e">⚓</span><b>Big Creek</b>Deep-water port opened in 1990.</div>
+      <div><span class="e">🌍</span><b>Europe</b>Refrigerated ships to Fyffes in the UK and Ireland.</div>
+    </div>
   </div>
 </section>
 
 <!-- RISKS -->
-<section id="risks">
+<section id="risks" class="alt">
   <div class="wrap">
+    <span class="thesis-link">Thesis evidence: dependence on one crop</span>
     <h2>The risks of depending on one crop</h2>
-    <div class="grid g2" style="margin-top:20px">
-      <div class="card risk"><h3>🌀 Bad weather</h3><p style="margin:0">Hurricanes in 1975 and 1978 wiped out plantations. In 2001, Hurricane Iris levelled every banana farm in the south in under two hours.</p></div>
-      <div class="card risk"><h3>🦠 Plant disease</h3><p style="margin:0">Panama disease had already destroyed Belize's first banana industry. Any new disease could do the same.</p></div>
-      <div class="card risk"><h3>🌍 Overseas demand</h3><p style="margin:0">Prices and trade rules set in Europe decided how much Belize earned. As protected prices under the Lomé Convention weakened in the 1990s, Belize had to compete with much larger producers.</p></div>
-      <div class="card risk"><h3>🏪 One buyer, one crop</h3><p style="margin:0">Most of the crop went to one company, Fyffes. When bananas failed, workers and local shops lost income together.</p></div>
+    <p class="lead">Stann Creek and Toledo came to depend almost completely on bananas. Each risk below actually happened.</p>
+    <div class="grid g2" style="margin-top:18px">
+      <div class="card risk"><div class="when">1975, 1978, 2001</div><h3>🌀 Hurricanes</h3><p>Hurricanes in 1975 and 1978 wiped out plantations. In 2001 Hurricane Iris levelled every banana farm in the south in under two hours; only a couple of farms were insured, and growers estimated up to US$57 million in lost revenue.</p></div>
+      <div class="card risk"><div class="when">1916–1937</div><h3>🦠 Plant disease</h3><p>Panama disease destroyed the first banana industry. Today a new strain, Fusarium TR4, threatens the Cavendish bananas Belize grows, and Belize is testing Taiwan's resistant Formosana banana.</p></div>
+      <div class="card risk"><div class="when">1990s–2000s</div><h3>📉 Overseas demand and trade rules</h3><p>Prices set in Europe decided what Belize earned. As protected prices under the Lomé Convention weakened, Belize had to compete with much larger, cheaper producers.</p></div>
+      <div class="card risk"><div class="when">2015</div><h3>🏢 One main buyer</h3><p>Most of the crop goes to Fyffes. When Fyffes stopped buying from Meridian Enterprises in 2015, thousands of Belizeans lost work.</p></div>
     </div>
   </div>
 </section>
 
+<!-- SOURCES -->
+<section id="sources">
+  <div class="wrap">
+    <h2>Evaluating our sources</h2>
+    <p class="lead">We rated each source for how reliable and useful it was. Primary sources are records from the time or official data; secondary sources interpret the past.</p>
+    <div class="grid g3" id="srcgrid" style="margin-top:18px"></div>
+    <p style="margin-top:20px">Primary source video: <a href="https://youtu.be/bdRp2nQhHiU" target="_blank" rel="noopener">Banana production in Belize (YouTube)</a></p>
+  </div>
+</section>
+
 <!-- CONCLUSION -->
-<section id="conclusion">
+<section id="conclusion" class="alt">
   <div class="wrap">
     <h2>Conclusion</h2>
-    <p class="lead">Between 1970 and 2000, banana farming turned southern Belize from a quiet farming and fishing region into a major export zone. It brought jobs, money, roads and a deep-water port, and towns like Independence and Bella Vista grew around it. This supports our thesis: the same growth made Stann Creek and Toledo depend on one crop that hurricanes, disease or a change in overseas demand could wipe out.</p>
-    <h3 style="margin-top:30px">Lessons learned</h3>
+    <p class="lead">We asked: <b>how did the growth of banana farming change the economy and daily life for people in southern Belize between 1970 and 2000?</b></p>
+    <p class="lead">The evidence supports our thesis. Banana farming brought jobs, foreign income, better roads and the Port of Big Creek, and turned villages like Independence and Bella Vista into busy communities. Daily life shifted from small farming and fishing to wage work, and new migrant communities settled in the south. But the region came to depend on a single crop: hurricanes, disease and decisions made overseas could wipe out income almost overnight, as Hurricane Iris showed in 2001.</p>
+    <h3 style="margin-top:28px">Four lessons learned</h3>
     <div class="grid g2" style="margin-top:12px">
-      <div class="card lesson"><b>1. Don't rely on one crop.</b> Growing other crops alongside bananas keeps communities strong when the harvest fails.</div>
-      <div class="card lesson"><b>2. Plan for disasters.</b> Hurricanes are a regular part of life in Belize, so farms need insurance and recovery plans.</div>
-      <div class="card lesson"><b>3. Protect the workers.</b> Workers lose the most when farms close, so fair pay and safe conditions matter.</div>
-      <div class="card lesson"><b>4. Decisions abroad affect us at home.</b> Prices and trade rules overseas shape jobs in southern Belize.</div>
+      <div class="card lesson"><b>1. Don't rely on one crop.</b> Southern Belize should keep growing bananas but also plant other crops, so communities stay strong when the harvest fails.</div>
+      <div class="card lesson"><b>2. Plan for disasters.</b> Hurricanes are a regular part of life in Belize. Farms need insurance and recovery plans before the storm comes.</div>
+      <div class="card lesson"><b>3. Protect the workers.</b> Workers lose the most when farms close, so fair pay, safe conditions and support after disasters matter.</div>
+      <div class="card lesson"><b>4. Decisions abroad affect us at home.</b> Prices, trade rules and buyers in Europe shape jobs in southern Belize, so building local strength reduces that risk.</div>
     </div>
-    <h3 style="margin-top:30px">Questions that remain</h3>
+    <h3 style="margin-top:28px">Questions that remain</h3>
     <p class="q">How did the arrival of migrant workers after 1985 change relations between communities in southern Belize?</p>
-    <p class="q">Could southern Belize have grown as quickly without bananas, for example through citrus, rice or tourism?</p>
+    <p class="q">If Fusarium TR4 reaches Belize, can disease-resistant bananas replace the Cavendish fast enough to save the industry and its jobs?</p>
   </div>
 </section>
 
@@ -227,31 +402,39 @@ footer b{color:var(--banana)}
   <div class="wrap">
     <h2>Key terms</h2>
     <dl class="gloss">
-      <dt>Banana Control Board</dt><dd>The government body that ran much of the banana industry from 1975 until the farms were sold in 1985.</dd>
-      <dt>Privatisation</dt><dd>When the government sells businesses it owns to private owners.</dd>
-      <dt>Banana Growers Association (BGA)</dt><dd>The association of banana farmers that took over running the industry in 1991.</dd>
-      <dt>Lomé Convention</dt><dd>A trade agreement that let former colonies like Belize sell bananas to Europe at protected prices.</dd>
-      <dt>Panama disease</dt><dd>A soil fungus that kills banana plants; it destroyed Belize's first banana industry.</dd>
-      <dt>Foreign exchange</dt><dd>Money in foreign currencies, such as US dollars or British pounds, earned by selling goods abroad.</dd>
+      <div><dt>Monoculture</dt><dd>Relying on a single crop; profitable, but one storm, disease or price drop can hurt a whole region.</dd></div>
+      <div><dt>Banana Control Board</dt><dd>The government body that ran much of the industry from 1975 until the farms were sold in 1985.</dd></div>
+      <div><dt>Privatisation</dt><dd>When the government sells businesses it owns to private owners.</dd></div>
+      <div><dt>Banana Growers Association (BGA)</dt><dd>The association of banana farmers that took over running the industry in 1991.</dd></div>
+      <div><dt>Lomé Convention</dt><dd>A trade agreement that let former colonies like Belize sell bananas to Europe at protected prices.</dd></div>
+      <div><dt>Panama disease</dt><dd>A soil fungus (Fusarium wilt) that kills banana plants; it destroyed Belize's first banana industry.</dd></div>
+      <div><dt>Fusarium TR4</dt><dd>A newer strain of Panama disease that attacks the Cavendish bananas grown for export today.</dd></div>
+      <div><dt>Foreign exchange</dt><dd>Money in foreign currencies, such as US dollars or British pounds, earned by selling goods abroad.</dd></div>
+      <div><dt>Deep-water port</dt><dd>A port deep enough for large cargo ships to dock directly, like the Port of Big Creek.</dd></div>
     </dl>
   </div>
 </section>
 
 <!-- BIBLIOGRAPHY -->
-<section id="bibliography">
+<section id="bibliography" class="alt">
   <div class="wrap bib">
     <h2>Bibliography</h2>
     <h3>Primary sources</h3>
     <ol>
+      <li>Avila, Lixion A. <i>Tropical Cyclone Report: Hurricane Iris, 4–9 October 2001</i>. Miami: National Hurricane Center, 2001. <a href="https://www.nhc.noaa.gov/data/tcr/AL112001_Iris.pdf" target="_blank" rel="noopener">https://www.nhc.noaa.gov/data/tcr/AL112001_Iris.pdf</a>.</li>
       <li>Belize. <i>Banana Industry Act</i>. Chapter 205, Laws of Belize, Revised Edition 2011. <a href="https://belizejudiciary.org/download/Laws-of-Belize-Update-2011/VOLUME%2010/Cap%20205%20Banana%20Industry%20Act.pdf" target="_blank" rel="noopener">https://belizejudiciary.org/download/Laws-of-Belize-Update-2011/VOLUME%2010/Cap%20205%20Banana%20Industry%20Act.pdf</a>.</li>
+      <li>Belize Real Estate MLS. "1200 Acre Banana Farm in Southern Belize." Property listing. Accessed November 2026. <a href="https://belizerealestatemls.com/property/1200-acre-banana-farm-in-southern-belize/" target="_blank" rel="noopener">https://belizerealestatemls.com/property/1200-acre-banana-farm-in-southern-belize/</a>.</li>
       <li>Channel 5 Belize. "Relief Effort Gains Strength." October 10, 2001. <a href="https://archive.channel5belize.com/?p=18368" target="_blank" rel="noopener">https://archive.channel5belize.com/?p=18368</a>.</li>
       <li>Channel 5 Belize. "Wiped Out by Iris, Banana Industry Seeks Recovery." October 18, 2001. <a href="https://archive.channel5belize.com/?p=18326" target="_blank" rel="noopener">https://archive.channel5belize.com/?p=18326</a>.</li>
+      <li>Observatory of Economic Complexity. "Bananas in Belize: Bilateral Trade Data." Accessed November 2026. <a href="https://oec.world/en/profile/bilateral-product/bananas/reporter/blz" target="_blank" rel="noopener">https://oec.world/en/profile/bilateral-product/bananas/reporter/blz</a>.</li>
+      <li>ReliefWeb. "Taiwan Technical Mission in Belize Introduced Taiwan's Formosana AAA to Enhance Capability of Belize Bananas to Resist Fusarium TR4 Banana." Accessed November 2026. <a href="https://reliefweb.int/report/belize/taiwan-technical-mission-belize-introduced-taiwans-formosana-aaa-enhance-capability-belize-bananas-resist-fusarium-tr4-banana" target="_blank" rel="noopener">https://reliefweb.int/report/belize/taiwan-technical-mission-belize-introduced-taiwans-formosana-aaa-enhance-capability-belize-bananas-resist-fusarium-tr4-banana</a>.</li>
       <li>Statistical Institute of Belize. <i>Banana and Sugar Industry 2019</i>. Belmopan: Statistical Institute of Belize, 2019. <a href="https://sib.org.bz/wp-content/uploads/Banana_Sugar_Industry_2019.pdf" target="_blank" rel="noopener">https://sib.org.bz/wp-content/uploads/Banana_Sugar_Industry_2019.pdf</a>.</li>
       <li>"Banana Production in Belize." YouTube video. Accessed November 2026. <a href="https://youtu.be/bdRp2nQhHiU" target="_blank" rel="noopener">https://youtu.be/bdRp2nQhHiU</a>.</li>
     </ol>
     <h3>Secondary sources</h3>
     <ol>
       <li>Belize Hub. "A History of the Banana Industry in Belize." Accessed November 2026. <a href="https://www.belizehub.com/the-banana-industry-in-belize/" target="_blank" rel="noopener">https://www.belizehub.com/the-banana-industry-in-belize/</a>.</li>
+      <li>Bulmer-Thomas, Victor. <i>The Political Economy of Central America since 1920</i>. Cambridge: Cambridge University Press, 1987.</li>
       <li>Central Bank of Belize. "Implications of Eroding Trade Preferences." Working paper. Belize City: Central Bank of Belize. <a href="https://www.centralbank.org.bz/docs/default-source/4.5-conferences-and-working-papers/implications-of-eroding-trade-preferences--paper-.pdf" target="_blank" rel="noopener">https://www.centralbank.org.bz/docs/default-source/4.5-conferences-and-working-papers/implications-of-eroding-trade-preferences--paper-.pdf</a>.</li>
       <li>Doyle, Macdara. "Busting Banana Unions in Belize." <i>Multinational Monitor</i> 17, no. 9 (September 1996). <a href="https://www.multinationalmonitor.org/hyper/mm0996.08.html" target="_blank" rel="noopener">https://www.multinationalmonitor.org/hyper/mm0996.08.html</a>.</li>
       <li>Josling, Timothy E., and Timothy G. Taylor, eds. <i>Banana Wars: The Anatomy of a Trade Dispute</i>. Wallingford: CABI Publishing, 2003.</li>
@@ -259,6 +442,7 @@ footer b{color:var(--banana)}
       <li>Merrill, Tim, ed. <i>Guatemala and Belize: Country Studies</i>. Washington, DC: Federal Research Division, Library of Congress, 1993. <a href="https://countrystudies.us/belize/54.htm" target="_blank" rel="noopener">https://countrystudies.us/belize/54.htm</a>.</li>
       <li>Moberg, Mark. <i>Slipping Away: Banana Politics and Fair Trade in the Eastern Caribbean</i>. New York: Berghahn Books, 2008.</li>
       <li>Shoman, Assad. <i>A History of Belize in 13 Chapters</i>. Belize City: Angelus Press, 2011.</li>
+      <li>Stann Creek Valley. "Banana." Local history website. Accessed November 2026. <a href="https://stanncreekvalley.weebly.com/banana.html" target="_blank" rel="noopener">https://stanncreekvalley.weebly.com/banana.html</a>.</li>
     </ol>
   </div>
 </section>
@@ -270,5 +454,38 @@ footer b{color:var(--banana)}
     Coordinator: Utzil Sho · Members: Daniel Pineda, Keira Varro, Jamie Heaton, Tsunade Aguilar, Gabriel Villanueva
   </div>
 </footer>
+
+<script>
+{
+const DEST=[["United Kingdom",28.1],["Ireland",11.2],["Spain",1.12],["United States",0.71],["Belgium",0.65]];
+document.getElementById('bars').innerHTML=DEST.map(([c,v])=>`<div class="bar-row"><span>${c}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(v/28.1*100,1.5)}%"></div></div><span class="v">$${v}M</span></div>`).join('');
+
+const SRC=[
+ ["Statistical Institute of Belize, Banana & Sugar Industry 2019","p",95,"Official government data on production, employment and output."],
+ ["Central Bank of Belize, Eroding Trade Preferences","s",90,"Analytical economic paper on how losing trade preferences affects Belize."],
+ ["OEC bilateral banana trade data","p",85,"Trade statistics showing how much bananas earn and where they go."],
+ ["Belize Hub, History of the Banana Industry","s",65,"General article; useful overview, checked against other sources."],
+ ["Stann Creek Valley local history site","s",60,"Local perspective on the early industry and the railway."],
+ ["1,200-acre banana farm listing","p",45,"A modern commercial record showing the size and value of banana land."],
+ ["ReliefWeb: Taiwan mission and Formosana","p",35,"Aid dispatch on fighting Fusarium TR4; useful but promotional."]
+];
+document.getElementById('srcgrid').innerHTML=SRC.map(([n,t,r,d])=>`<div class="card"><span class="tag ${t}">${t==='p'?'Primary':'Secondary'}</span><p style="margin:8px 0 4px"><b>${n}</b></p><p class="src" style="font-size:.9rem;margin:0 0 8px">${d}</p><div style="font-size:.8rem;font-weight:600">Reliability: ${r}%</div><div class="rel"><div style="width:${r}%"></div></div></div>`).join('');
+
+const P=(lon,lat)=>[((lon+89.3)/1.35)*500,((17.65-lat)/1.85)*600];
+const coast=[[-89.15,17.65],[-88.24,17.65],[-88.2,17.5],[-88.28,17.3],[-88.3,17.15],[-88.22,16.97],[-88.3,16.8],[-88.36,16.62],[-88.37,16.5],[-88.42,16.42],[-88.48,16.36],[-88.6,16.24],[-88.75,16.13],[-88.83,16.05],[-88.92,15.94],[-89.15,15.89]];
+const PLACES=[["Dangriga",-88.22,16.97,12],["Mullins River",-88.29,17.1,12],["Stann Creek Valley",-88.45,16.95,-118],["Cowpen",-88.5,16.68,-62],["Big Creek / Independence",-88.41,16.53,12],["Bella Vista",-88.55,16.47,-82],["Monkey River",-88.49,16.36,12],["Punta Gorda",-88.8,16.1,12]];
+const pts=coast.map(c=>P(...c).map(v=>v.toFixed(1)).join(',')).join(' ');
+const hw=[[-88.75,17.25],[-88.55,17.1],[-88.38,16.95],[-88.4,16.75],[-88.45,16.6],[-88.43,16.53],[-88.55,16.45],[-88.68,16.3],[-88.8,16.1]].map(c=>P(...c).join(',')).join(' ');
+let h=`<rect x="0" y="0" width="${P(-89.15,0)[0]}" height="600" fill="#d9d6cc"/><text x="8" y="300" font-size="12" fill="#77735f" font-style="italic" transform="rotate(-90 14 300)">GUATEMALA</text>
+<polygon points="${pts}" fill="#e9e4c9" stroke="#8a9a7b" stroke-width="2"/>
+<polyline points="${hw}" fill="none" stroke="#b5432b" stroke-width="2.5" stroke-dasharray="7 5"/>
+<text x="${P(-89.1,16.3)[0]}" y="${P(-89.1,16.3)[1]}" font-size="13" fill="#6b7a5f" font-style="italic">TOLEDO</text>
+<text x="${P(-89.0,17.05)[0]}" y="${P(-89.0,17.05)[1]}" font-size="13" fill="#6b7a5f" font-style="italic">STANN CREEK</text>
+<text x="${P(-88.2,16.2)[0]}" y="${P(-88.2,16.2)[1]}" font-size="14" fill="#2c6e8f" font-style="italic">Caribbean Sea</text>
+<g transform="translate(390,40)"><rect x="-8" y="-20" width="108" height="34" rx="8" fill="#fffdf6" opacity=".92"/><line x1="0" y1="-4" x2="26" y2="-4" stroke="#b5432b" stroke-width="2.5" stroke-dasharray="7 5"/><text x="32" y="0" font-size="11">Southern Hwy</text></g>`;
+PLACES.forEach(([n,lon,lat,dx])=>{const [x,y]=P(lon,lat);h+=`<circle cx="${x}" cy="${y}" r="6" fill="#b5432b" stroke="#fff" stroke-width="2"/><text x="${x+dx}" y="${y+4}" font-size="12" font-weight="600" fill="#1d2a1f" paint-order="stroke" stroke="#fff" stroke-width="3">${n}</text>`});
+document.getElementById('mapsvg').innerHTML=h;
+}
+</script>
 </body>
 </html>
