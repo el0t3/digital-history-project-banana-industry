@@ -2,10 +2,13 @@
 
 HIST1014 Introduction to Belizean History, Section 5, Group 5, University of Belize (2026).
 
-**Central research question:** How did the banana industry transform Belize's economy and labour force?
+**Topic:** The Growth of the Banana Industry in Southern Belize (1970–2000)
 
-An interactive one-page website with a clickable timeline, a map of southern Belize, export data, a field-to-market journey, a risk simulator, a glossary, a quiz and a Chicago-style bibliography.
+**Central research question:** How did the growth of banana farming change the economy and daily life for people in southern Belize between 1970 and 2000?
 
-**Group members:** Gabriel Villanueva, Jamie Heaton, Daniel Pienda, Keria Varro, Tsunade Aguilar, Utzil Sho
+A one-page website covering background, a 1970–2000 timeline, economic and daily-life impact, risks, lessons learned, key terms and a Chicago-style bibliography.
+
+**Group coordinator:** Utzil Sho  
+**Group members:** Daniel Pineda, Keira Varro, Jamie Heaton, Tsunade Aguilar, Gabriel Villanueva
 
 Open `index.html` in any browser, or view it on GitHub Pages.
