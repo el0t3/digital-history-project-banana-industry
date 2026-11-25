@@ -9,6 +9,6 @@ HIST1014 Introduction to Belizean History, Section 5, Group 5, University of Bel
 A one-page website covering background, a 1970–2000 timeline, economic and daily-life impact, risks, lessons learned, key terms and a Chicago-style bibliography.
 
 **Group coordinator:** Utzil Sho  
-**Group members:** Daniel Pineda, Keira Varro, Jamie Heaton, Tsunade Aguilar, Gabriel Villanueva
+**Group members:** Daniel Pineda, Keria Varro, Jamie Heaton, Tsunade Aguilar, Gabriel Villanueva
 
 Open `index.html` in any browser, or view it on GitHub Pages.
